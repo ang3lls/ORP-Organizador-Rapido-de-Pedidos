@@ -9,9 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Load_Logo"></activity>
+        <activity
+            android:name=".ui.login.Login_Restaurante"
+            android:label="@string/title_activity_login__restaurante" />
         <activity
             android:name=".ui.login.LoginRestaurante"
-            android:label="@string/title_activity_login_restaurante"></activity>
+            android:label="@string/title_activity_login_restaurante" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -22,6 +26,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
