@@ -1,5 +1,6 @@
 package com.rdt.orp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
@@ -45,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+    }
+
+    public void irParaLogin(View view){
+        Intent intent1 = new Intent(getApplicationContext(), Load_Logo.class);
+        startActivity(intent1);
     }
 
     @Override

@@ -26,14 +26,14 @@ import com.rdt.orp.R;
 import com.rdt.orp.ui.login.LoginViewModel;
 import com.rdt.orp.ui.login.LoginViewModelFactory;
 
-public class LoginActivity extends AppCompatActivity {
+class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_restaurante);
+        setContentView(R.layout.activity_login__restaurante);
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
