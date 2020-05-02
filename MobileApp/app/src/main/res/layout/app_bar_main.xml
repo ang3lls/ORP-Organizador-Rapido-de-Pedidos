@@ -37,7 +37,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="#F3D548"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
