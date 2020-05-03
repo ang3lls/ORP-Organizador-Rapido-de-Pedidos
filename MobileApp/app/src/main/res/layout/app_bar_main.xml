@@ -15,15 +15,6 @@
 
     <include layout="@layout/content_main" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="irParaLogin"
-        android:text="Button"
-        tools:layout_editor_absoluteX="172dp"
-        tools:layout_editor_absoluteY="223dp" />
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"

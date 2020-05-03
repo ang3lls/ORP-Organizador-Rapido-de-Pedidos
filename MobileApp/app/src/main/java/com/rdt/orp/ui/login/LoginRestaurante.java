@@ -26,7 +26,7 @@ import com.rdt.orp.R;
 import com.rdt.orp.ui.login.LoginViewModel;
 import com.rdt.orp.ui.login.LoginViewModelFactory;
 
-class LoginActivity extends AppCompatActivity {
+public class LoginRestaurante extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
 

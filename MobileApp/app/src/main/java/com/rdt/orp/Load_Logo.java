@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
+import com.rdt.orp.ui.login.LoginRestaurante;
 
 public class Load_Logo extends AppCompatActivity {
 
@@ -20,7 +21,7 @@ public class Load_Logo extends AppCompatActivity {
         new Handler().postDelayed(new Runnable(){
             @Override
                     public void run(){
-                        startActivity(new Intent(getBaseContext(), MainActivity.class));
+                        startActivity(new Intent(getBaseContext(), LoginRestaurante.class));
                         finish();
             }
 

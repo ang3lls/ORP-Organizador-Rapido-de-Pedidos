@@ -55,4 +55,5 @@
         <item>30</item>
         <item>31</item>
     </string-array>
+    <string name="title_activity_login_usuario">Sign in</string>
 </resources>
