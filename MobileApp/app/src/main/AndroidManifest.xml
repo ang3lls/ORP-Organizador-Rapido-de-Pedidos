@@ -9,10 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".restaurante_cadastro"></activity>
-        <activity
-            android:name=".ui.login.login_usuario"
-            android:label="@string/title_activity_login_usuario" />
+        <activity android:name=".login"></activity>
+        <activity android:name=".restaurante_cadastro" />
         <activity android:name=".Load_Logo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
