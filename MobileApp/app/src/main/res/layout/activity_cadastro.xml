@@ -13,15 +13,14 @@
         android:layout_marginTop="16dp"
         android:backgroundTint="#FFFFFF"
         android:fontFamily="@font/anton"
-        android:text="CADASTRO"
+        android:text="CADASTRO PESSOAL"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="36sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/username"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.112"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.122" />
+        app:layout_constraintVertical_bias="0.116" />
 
     <Button
         android:id="@+id/button2"
