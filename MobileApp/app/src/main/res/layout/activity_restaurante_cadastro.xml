@@ -73,7 +73,7 @@
         tools:ignore="DuplicateIds,NotSibling" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_add_prato_principal"
         android:layout_width="200dp"
         android:layout_height="53dp"
         android:background="@drawable/proximo"
@@ -104,7 +104,7 @@
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="true"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/btn_add_prato_principal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
