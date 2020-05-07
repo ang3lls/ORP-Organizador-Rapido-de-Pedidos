@@ -10,7 +10,6 @@
     <string name="menu_home">Cardapio</string>
     <string name="menu_gallery">Pedidos</string>
     <string name="menu_slideshow">Adicionar cardapio</string>
-
     <string name="home_second">Home Second</string>
     <string name="title_activity_login_restaurante">Entrar</string>
     <string name="prompt_email">Email</string>

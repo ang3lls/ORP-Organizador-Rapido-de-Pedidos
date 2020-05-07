@@ -7,86 +7,99 @@
     android:layout_height="match_parent"
     tools:context=".ui.gallery.GalleryFragment">
 
-    <TextView
-        android:id="@+id/text_gallery"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textColor="#00FFFFFF"
-        android:textColorHint="#00FFFFFF"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
         android:id="@+id/add_prato_principal"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="76dp"
         android:background="@drawable/email"
         android:backgroundTint="#D1D0CD"
         android:gravity="center_vertical"
-        android:hint="Adicionar prato principal"
+        android:hint="Nome do prato"
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="true"
         android:textAlignment="center"
         android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_add_prato_principal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlCompat" />
+
+    <NumberPicker
+        android:id="@+id/add_preco"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:background="@drawable/email"
+        android:backgroundTint="#D1D0CD"
+        android:gravity="center_vertical"
+        android:hint="Preço (R$)"
+        android:inputType="numberDecimal"
+        android:selectAllOnFocus="true"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.575"
+        app:layout_constraintStart_toEndOf="@+id/add_prato_principal"
+        app:layout_constraintTop_toTopOf="@+id/add_prato_principal"
         tools:ignore="RtlCompat" />
 
     <Button
         android:id="@+id/btn_add_prato_principal"
-        android:layout_width="128dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="56dp"
         android:background="@drawable/proximo"
         android:backgroundTint="#F3D548"
         android:text="Adicionar"
         android:textColor="#ffff99"
         android:textColorHint="#ffffff"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/add_prato_principal"
-        app:layout_constraintTop_toTopOf="@+id/add_prato_principal" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
-        android:id="@+id/btn_add_salada"
-        android:layout_width="128dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/proximo"
-        android:backgroundTint="#F3D548"
-        android:text="Adicionar"
-        android:textColor="#ffff99"
-        android:textColorHint="#ffffff"
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="323dp"
+        android:layout_height="202dp"
+        android:layout_marginTop="188dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/add_salada"
-        app:layout_constraintTop_toTopOf="@+id/add_salada" />
-
-    <EditText
-        android:id="@+id/add_salada"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
-        android:background="@drawable/email"
-        android:backgroundTint="#D1D0CD"
-        android:gravity="center_vertical"
-        android:hint="Adicionar salada"
-        android:inputType="textEmailAddress"
-        android:selectAllOnFocus="true"
-        android:textAlignment="center"
-        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_prato_principal"
-        tools:ignore="DuplicateIds,NotSibling,RtlCompat" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/radio_prato_principal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Prato principal"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/radio_salada"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Salada"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/radio_bebida"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bebida"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/radio_sobremesa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sobremesa"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/radioButton7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Acompanhamentos"
+            android:textSize="20sp" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
