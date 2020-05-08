@@ -61,7 +61,7 @@
         android:id="@+id/radioGroup"
         android:layout_width="323dp"
         android:layout_height="202dp"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="212dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -70,7 +70,7 @@
             android:id="@+id/radio_prato_principal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Prato principal"
+            android:text="Pratos"
             android:textSize="20sp" />
 
         <RadioButton
@@ -101,5 +101,50 @@
             android:text="Acompanhamentos"
             android:textSize="20sp" />
     </RadioGroup>
+
+    <EditText
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:background="#00FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        android:fontFamily="@font/anton"
+        android:text="      PERSONALIZE O CARDÁPIO DE SEU"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toTopOf="@+id/username"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.332" />
+
+    <EditText
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="124dp"
+        android:background="#00FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        android:fontFamily="@font/anton"
+        android:text="                      RESTAURANTE"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toTopOf="@+id/username"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.332" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valor do prato"
+        tools:layout_editor_absoluteX="297dp"
+        tools:layout_editor_absoluteY="480dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
