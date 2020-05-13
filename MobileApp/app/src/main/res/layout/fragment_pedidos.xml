@@ -25,24 +25,6 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="RtlCompat" />
 
-    <NumberPicker
-        android:id="@+id/add_preco"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:background="@drawable/email"
-        android:backgroundTint="#D1D0CD"
-        android:gravity="center_vertical"
-        android:hint="Preço (R$)"
-        android:inputType="numberDecimal"
-        android:selectAllOnFocus="true"
-        android:textAlignment="center"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.575"
-        app:layout_constraintStart_toEndOf="@+id/add_prato_principal"
-        app:layout_constraintTop_toTopOf="@+id/add_prato_principal"
-        tools:ignore="RtlCompat" />
-
     <Button
         android:id="@+id/btn_add_prato_principal"
         android:layout_width="300dp"
@@ -121,7 +103,7 @@
         app:layout_constraintVertical_bias="0.332" />
 
     <EditText
-        android:id="@+id/textView2"
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="124dp"
@@ -138,13 +120,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.332" />
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Valor do prato"
-        tools:layout_editor_absoluteX="297dp"
-        tools:layout_editor_absoluteY="480dp" />
+    <EditText
+        android:id="@+id/editText6"
+        android:layout_width="120dp"
+        android:layout_height="54dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/email"
+        android:backgroundTint="#D1D0CD"
+        android:ems="10"
+        android:hint="Preço"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/add_prato_principal" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
