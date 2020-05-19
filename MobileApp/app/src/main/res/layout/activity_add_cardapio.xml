@@ -3,34 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".ui.gallery.GalleryFragment">
+    tools:context=".add_cardapio">
 
     <Button
-        android:id="@+id/btn_add_pratos"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="36dp"
-        android:background="@drawable/proximo"
-        android:backgroundTint="#F3D548"
-        android:text="Adicionar"
-        android:textColor="#ffff99"
-        android:textColorHint="#ffffff"
+        android:id="@+id/button"
+        android:layout_width="118dp"
+        android:layout_height="57dp"
+        android:layout_marginBottom="28dp"
+        android:onClick="irParaCardapio"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintHorizontal_bias="0.945"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/list_prato_p"
+        app:layout_constraintVertical_bias="0.949" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="323dp"
         android:layout_height="202dp"
-        android:layout_marginBottom="168dp"
-        app:layout_constraintBottom_toTopOf="@+id/add_prato"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
 
         <RadioButton
             android:id="@+id/radio_prato_principal"
@@ -61,7 +57,7 @@
             android:textSize="20sp" />
 
         <RadioButton
-            android:id="@+id/radioButton7"
+            android:id="@+id/radio_acompanha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Acompanhamentos"
@@ -70,9 +66,9 @@
 
     <EditText
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        android:layout_width="359dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="36dp"
         android:background="#00FFFFFF"
         android:backgroundTint="#FFFFFF"
         android:fontFamily="@font/anton"
@@ -80,20 +76,15 @@
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="28sp"
-        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/add_prato"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/email"
         android:backgroundTint="#D1D0CD"
         android:gravity="center_vertical"
@@ -102,17 +93,17 @@
         android:selectAllOnFocus="true"
         android:textAlignment="center"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_add_pratos"
-        app:layout_constraintEnd_toStartOf="@+id/editText6"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/radioGroup"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="@+id/radioGroup"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
         tools:ignore="RtlCompat" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/add_preco"
         android:layout_width="120dp"
         android:layout_height="54dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/email"
         android:backgroundTint="#D1D0CD"
         android:ems="10"
@@ -120,10 +111,26 @@
         android:inputType="numberDecimal"
         android:textAlignment="center"
         android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/add_prato"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/add_prato"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintEnd_toEndOf="@+id/add_prato"
+        app:layout_constraintStart_toStartOf="@+id/add_prato"
+        app:layout_constraintTop_toBottomOf="@+id/add_prato" />
+
+    <Button
+        android:id="@+id/btn_add_pratos2"
+        android:layout_width="237dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/proximo"
+        android:backgroundTint="#F3D548"
+        android:onClick="add_pratos"
+        android:text="Adicionar"
+        android:textColor="#ffff99"
+        android:textColorHint="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+

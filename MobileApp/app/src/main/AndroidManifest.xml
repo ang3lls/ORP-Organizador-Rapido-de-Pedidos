@@ -9,12 +9,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".login"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".restaurante_cadastro"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Load_Logo"
+        android:theme="@style/AppTheme"
+        tools:ignore="ExtraText">
+        <activity android:name=".add_cardapio"
+            android:screenOrientation="portrait"
+        />
+        <activity android:name=".lista" />
+        <activity
+            android:name=".Load_Logo"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,12 +24,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".cadastro"
-            android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
