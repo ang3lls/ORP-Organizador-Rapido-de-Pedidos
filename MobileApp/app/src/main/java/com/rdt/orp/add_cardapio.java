@@ -35,7 +35,7 @@ public class add_cardapio extends AppCompatActivity {
         String prato;
         String preco_s;
         boolean check = false;
-        double preco;
+        float preco;
 
         rb1 = findViewById(R.id.radio_prato_principal);
         rb2 = findViewById(R.id.radio_salada);
@@ -52,11 +52,11 @@ public class add_cardapio extends AppCompatActivity {
             Toast.makeText(add_cardapio.this, "Ops, parece que ainda falta preencher algo!",Toast.LENGTH_SHORT).show();
         }
         else {
-            preco = Double.parseDouble(preco_s);
+            preco = Float.parseFloat(preco_s);
             Intent intentEnvio = new Intent(getApplicationContext(), lista.class);
             Bundle parametros = new Bundle();
             parametros.putString("chave prato",prato);
-            parametros.putDouble("chave preco",preco);
+            parametros.putFloat("chave preco",preco);
             intentEnvio.putExtras(parametros);
             Toast.makeText(add_cardapio.this, prato + " de R$" + preco + " adicionado!", Toast.LENGTH_SHORT).show();
             startActivity(intentEnvio);

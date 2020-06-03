@@ -1,34 +1,54 @@
 package com.rdt.orp;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.Button;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class lista extends AppCompatActivity {
 
+    private ArrayList<Integer> mpreco = new ArrayList<Integer>();
+
+
     ArrayList<String> prato_pr = new ArrayList<>();
+    ArrayList<Float> preco_pr = new ArrayList<>();
     RecyclerView pt1Cardapio;
     RecyclerView.LayoutManager pt1LayoutManager;
     RecyclerView.Adapter pt1Adapter;
-    boolean first;
     Intent intentRecebe;
     Bundle parametros;
+    final String pratos = "prato ";
+    final String precos = "preco ";
     int size = 0;
+
     private static String ARQUIVO_PREFERENCIA = "ArquivoPreferencia";
+
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
+
         setContentView(R.layout.activity_lista);
+
 
         pt1Cardapio = findViewById(R.id.list_prato_p);
 
@@ -40,19 +60,23 @@ public class lista extends AppCompatActivity {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             size = sharedPreferences.getInt("size", 0);
             String aux = parametros.getString("chave prato");
-            String[] prato = new String[size+1];
+            Float preco = parametros.getFloat("chave preco");
+            Float precos[] = new Float[size+1];
+            String prato[] = new String[size+1];
             prato[size] = aux;
-            editor.putString("nome", prato[size]);
+            precos[size] = preco;
+            editor.putFloat();
+            editor.putString(pratos + size, prato[size]);
             editor.commit();
-            if(sharedPreferences.contains("nome")){
+            if(sharedPreferences.contains(pratos + size)){
                 for(int i = 0; i < size+1; i++){
-                    prato[i] = sharedPreferences.getString("nome", "Sem conteudo, que fome");
+                    prato[i] = sharedPreferences.getString(pratos + i, "Sem conteudo, que fome");
                 }
                 for(int i = 0; i < size+1; i++){
-                    prato_pr.add(i,prato[size]);
+                    prato_pr.add(i,prato[i]);
+                    preco_pr.add(preco);
                 }
                 size++;
-                Toast.makeText(this, "" + size, Toast.LENGTH_SHORT).show();
                 editor.putInt("size", size);
                 editor.commit();
             }
@@ -67,5 +91,8 @@ public class lista extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), add_cardapio.class);
         startActivity(intent);
     }
-
+    public void irParaPedidos(View view){
+        Intent intent = new Intent(getApplicationContext(), pedidos.class);
+        startActivity(intent);
+    }
 }

@@ -20,6 +20,13 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string-array name="mesas">
+        <item>Mesa 1</item>
+        <item>Mesa 2</item>
+        <item>Mesa 3</item>
+        <item>Mesa 4</item>
+        <item>Mesa 5</item>
+    </string-array>
 
     <string-array name="day">
         <item>1</item>
