@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,7 +26,7 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, RecyclerViewClickInterface{
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -70,6 +71,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    @Override
+    public void onItemClick(int posistion) {
+
+    }
+
+    @Override
+    public void onLongItemClick(int position) {
 
     }
 }

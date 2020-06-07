@@ -16,6 +16,8 @@ public class add_cardapio extends AppCompatActivity {
     private EditText edtPrato;
     private EditText edtPreco;
     RadioButton rb1,rb2,rb3,rb4,rb5;
+    int tipoComida;
+    boolean check = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,6 @@ public class add_cardapio extends AppCompatActivity {
     public void add_pratos(View view){
         String prato;
         String preco_s;
-        boolean check = false;
         float preco;
 
         rb1 = findViewById(R.id.radio_prato_principal);
@@ -45,9 +46,8 @@ public class add_cardapio extends AppCompatActivity {
         prato = edtPrato.getText().toString();
         preco_s = edtPreco.getText().toString();
 
-        if(rb1.isChecked() || rb2.isChecked() || rb3.isChecked() || rb4.isChecked() || rb5.isChecked()){
-            check = true;
-        }
+       radioButtonSelection();
+
         if(prato.equals("")  || preco_s.equals("") || !check){
             Toast.makeText(add_cardapio.this, "Ops, parece que ainda falta preencher algo!",Toast.LENGTH_SHORT).show();
         }
@@ -55,11 +55,31 @@ public class add_cardapio extends AppCompatActivity {
             preco = Float.parseFloat(preco_s);
             Intent intentEnvio = new Intent(getApplicationContext(), lista.class);
             Bundle parametros = new Bundle();
+            parametros.putInt("chave tipo", tipoComida);
             parametros.putString("chave prato",prato);
             parametros.putFloat("chave preco",preco);
             intentEnvio.putExtras(parametros);
             Toast.makeText(add_cardapio.this, prato + " de R$" + preco + " adicionado!", Toast.LENGTH_SHORT).show();
             startActivity(intentEnvio);
+        }
+    }
+    public void radioButtonSelection(){
+
+        if(rb1.isChecked()){
+            tipoComida = 1;
+            check = true;
+        } else if(rb2.isChecked()){
+            tipoComida = 2;
+            check = true;
+        } else if(rb3.isChecked()){
+            tipoComida = 3;
+            check = true;
+        } else if(rb4.isChecked()){
+            tipoComida = 4;
+            check = true;
+        }else if(rb5.isChecked()){
+            tipoComida = 5;
+            check = true;
         }
     }
 
