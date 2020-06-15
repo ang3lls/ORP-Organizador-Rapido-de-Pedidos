@@ -17,7 +17,7 @@ int counter = 0;
 int pedidos = 0;
 bool start = false;
 int quantPratos;
-String quantipedidos = " ";
+ String quantPedidos = " ";
 
 void setup() {
   Serial.begin(9600);
@@ -41,47 +41,32 @@ void loop() {
       switch(cmd){
         case 0:
         if(caracter == ' '){
-        break;
         cmd++;
+        break;
+       
       }
         comando += caracter;
         delay(10);
         break;
 
         case 1:
-         // quanti pratos;
-          comando = " ";
-          if(caracter == ' '){
-             cmd++;
-             quantPratos = int(caracter);
-             Serial.println(quantPratos);
-             break;
-           }
-        caracter += caracter;
-        delay(10);     
-        break;
-        
-        case 2:
         // pedidos;
-        String pedidosN[quantPratos];
-        if(caracter == ' '){
-           pedidosN[i] = comando; 
-           counter++;
+        if(caracter == '*'){
            i++;
-           comando = " ";
+           Serial.println(quantPedidos);
+           quantPedidos = " ";
            break;
         }
-       comando += caracter;
+       quantPedidos += caracter;
        delay(10);  
-       
-        if(comando.indexOf("fim")){
-          counter = 0;
-        }
-        for(int i = 0; i < quantPratos; i++){
-    Serial.println(pedidosN[i]);
     }
-       break;
-    }
+     //if(comando.indexOf("fim")){
+         // counter = 0;
+         // Serial.print("\nQuantidade de novos pedidos: ");
+         // Serial.print(i);
+         // i = 0;
+         //  break;
+        //}
   }
   }
      if(digitalRead(btn1) == LOW && pedidos > 0){

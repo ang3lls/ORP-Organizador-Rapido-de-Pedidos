@@ -36,7 +36,7 @@
                 android:id="@+id/textView3"
                 android:layout_width="213dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="7dp"
+                android:layout_marginStart="16dp"
                 android:text="Prato Principal"
                 android:textSize="30sp"
                 android:textStyle="bold"

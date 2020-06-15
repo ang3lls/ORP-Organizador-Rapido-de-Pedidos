@@ -22,6 +22,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -65,6 +66,8 @@ public class pedidos extends AppCompatActivity implements AdapterView.OnItemSele
     RecyclerView.Adapter pedidoAdapter;
     RecyclerViewClickInterface recyclerViewClickInterface;
 
+    TextView total;
+
     final String pratosNome = "pratoN ";
     final String precosPrato = "precoN ";
     String nomes;
@@ -80,6 +83,7 @@ public class pedidos extends AppCompatActivity implements AdapterView.OnItemSele
         pedido = findViewById(R.id.list_pedidos);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         pedido.addItemDecoration(dividerItemDecoration);
+        total = findViewById(R.id.textView10);
 
         intentRecebe = getIntent();
         parametros = intentRecebe.getExtras();
@@ -90,6 +94,7 @@ public class pedidos extends AppCompatActivity implements AdapterView.OnItemSele
         String nen = parametros.getString("nennotame", "ok");
         nomes = parametros.getString("nome Pedidos");
         precos = parametros.getFloat("preco Pedidos");
+
         editor.putFloat(precosPrato + quantiPedidos, precos);
         editor.putString(pratosNome + quantiPedidos, nomes);
         editor.commit();
@@ -107,7 +112,11 @@ public class pedidos extends AppCompatActivity implements AdapterView.OnItemSele
         quantiPedidos++;
         editor.putInt("pedidos quantidade", quantiPedidos);
         editor.commit();
-
+        float tt = 0;
+        for(int i = 0; i < pedidos_preco.size(); i++){
+            tt += pedidos_preco.get(i);
+        }
+        total.setText("TOTAL: R$ " + tt);
         pedido.setHasFixedSize(true);
         pedidoLayoutManager = new LinearLayoutManager(this);
         pedidoAdapter = new MainAdapter(pedidos_nome, pedidos_preco, recyclerViewClickInterface);
@@ -155,7 +164,7 @@ public class pedidos extends AppCompatActivity implements AdapterView.OnItemSele
                     connectThread.enviar("novoPedido ");
                     connectThread.enviar(pedidos_nome.size() + " ");
                     for(int i = 0; i < pedidos_nome.size(); i++){
-                        connectThread.enviar(pedidos_nome.get(i) + " ");
+                        connectThread.enviar(pedidos_nome.get(i) + "*");
                     }
                     connectThread.enviar("fim");
                     Toast.makeText(getApplicationContext(),"Pedido enviado!",Toast.LENGTH_LONG).show();
