@@ -1,6 +1,4 @@
 package com.rdt.orp;
-import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,21 +10,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import static androidx.core.content.ContextCompat.startActivity;
+public class AdapterSobremesa extends RecyclerView.Adapter<AdapterSobremesa.ViewHolder>{
 
-public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
-
-    private ArrayList<String> prato_pr;
-    private ArrayList<Float> prato_pr_preco;
+    private ArrayList<String> sobremesa;
+    private ArrayList<Float> sobremesa_preco;
     private RecyclerViewClickInterface recyclerViewClickInterface;
-    private OnItemClickListener mListener;
+    private AdapterSobremesa.OnItemClickListener mListener;
     public interface OnItemClickListener {
         void onItemClickListener(int position);
     }
 
-    public void setOnItemClickListener(OnItemClickListener listener){
+    public void setOnItemClickListener(AdapterSobremesa.OnItemClickListener listener){
         mListener = listener;
     }
+
 
     @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -37,29 +34,29 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
 
     }
 
-    public void onBindViewHolder(@NonNull MainAdapter.ViewHolder holder, int position){
-        holder.precoPrato.setText("R$ " + prato_pr_preco.get(position));
-        holder.nomePrato.setText(prato_pr.get(position));
+    public void onBindViewHolder(@NonNull AdapterSobremesa.ViewHolder holder, int position){
+        holder.precoPrato.setText("R$ " + sobremesa_preco.get(position));
+        holder.nomePrato.setText(sobremesa.get(position));
     }
 
     public int getItemCount() {
-        return prato_pr.size();
+        return sobremesa.size();
     }
 
 
-    MainAdapter(ArrayList<String> pratos,ArrayList<Float> precos, RecyclerViewClickInterface recyclerViewClickInterface) {
-        this.prato_pr_preco = precos;
-        this.prato_pr = pratos;
+    AdapterSobremesa(ArrayList<String> pratos,ArrayList<Float> precos, RecyclerViewClickInterface recyclerViewClickInterface) {
+        this.sobremesa_preco = precos;
+        this.sobremesa = pratos;
         this.recyclerViewClickInterface = recyclerViewClickInterface;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView nomePrato;
         TextView precoPrato;
         private RecyclerViewClickInterface recyclerViewClickInterface;
 
-        ViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
+        ViewHolder(@NonNull View itemView, final AdapterSobremesa.OnItemClickListener listener) {
             super(itemView);
             nomePrato = itemView.findViewById(R.id.nomePrato);
             precoPrato = itemView.findViewById(R.id.precoPrato);
@@ -75,7 +72,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
                     }
                 }
             });
-
         }
     }
+
+
 }

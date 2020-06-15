@@ -1,22 +1,22 @@
 package com.rdt.orp;
 
 public class Comida {
-    private String nomaPrato;
+    private String nomePrato;
     private float precoPrato;
     private int tipoPrato;
 
-    public Comida(String nomaPrato, float precoPrato, int tipoPrato) {
-        this.nomaPrato = nomaPrato;
+    public Comida(String nomePrato, float precoPrato, int tipoPrato) {
+        this.nomePrato = nomePrato;
         this.precoPrato = precoPrato;
         this.tipoPrato = tipoPrato;
     }
 
-    public String getNomaPrato() {
-        return nomaPrato;
+    public String getNomePrato() {
+        return nomePrato;
     }
 
-    public void setNomaPrato(String nomaPrato) {
-        this.nomaPrato = nomaPrato;
+    public void setNomePrato(String nomePrato) {
+        this.nomePrato = nomePrato;
     }
 
     public float getPrecoPrato() {

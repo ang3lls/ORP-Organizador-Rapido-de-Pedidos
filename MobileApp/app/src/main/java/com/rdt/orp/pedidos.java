@@ -3,12 +3,16 @@ package com.rdt.orp;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -23,6 +27,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class pedidos extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -31,9 +36,9 @@ public class pedidos extends AppCompatActivity implements AdapterView.OnItemSele
     BluetoothAdapter meuBluetoothAdapter = null;
     BluetoothDevice arduino = null;
     BluetoothSocket meuSocket = null;
-    String pedidos[] = {"Aspargos", "Cebolinha", "Strognoff"};
     private static final int SOLICITA_ATIVACAO = 1;
     private static final int SOLICITA_CONEXAO = 2;
+    private static String ARQUIVO_PREFERENCIA = "ArquivoPreferencia";
 
     private static final int MESSAGE_READ  = 3;
   //  Handler mHandler;
@@ -46,6 +51,25 @@ public class pedidos extends AppCompatActivity implements AdapterView.OnItemSele
     boolean conexao = false;
 
     private static String MAC = null;
+    Intent intentRecebe;
+    Bundle parametros;
+
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+
+    ArrayList<String> pedidos_nome = new ArrayList<>();
+    ArrayList<Float> pedidos_preco = new ArrayList<>();
+
+    RecyclerView pedido;
+    RecyclerView.LayoutManager pedidoLayoutManager;
+    RecyclerView.Adapter pedidoAdapter;
+    RecyclerViewClickInterface recyclerViewClickInterface;
+
+    final String pratosNome = "pratoN ";
+    final String precosPrato = "precoN ";
+    String nomes;
+    float precos;
+    int quantiPedidos = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +77,42 @@ public class pedidos extends AppCompatActivity implements AdapterView.OnItemSele
         setContentView(R.layout.activity_pedidos);
         getSupportActionBar().hide();
 
-        Spinner spinner = findViewById(R.id.spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.mesas, android.R.layout.simple_list_item_1);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
+        pedido = findViewById(R.id.list_pedidos);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        pedido.addItemDecoration(dividerItemDecoration);
+
+        intentRecebe = getIntent();
+        parametros = intentRecebe.getExtras();
+        sharedPreferences = getSharedPreferences("ArquivoPreferencia",0);
+        editor = sharedPreferences.edit();
+
+        quantiPedidos = sharedPreferences.getInt("pedidos quantidade",0);
+        String nen = parametros.getString("nennotame", "ok");
+        nomes = parametros.getString("nome Pedidos");
+        precos = parametros.getFloat("preco Pedidos");
+        editor.putFloat(precosPrato + quantiPedidos, precos);
+        editor.putString(pratosNome + quantiPedidos, nomes);
+        editor.commit();
+        for(int i = 0; i < quantiPedidos+1; i++){
+            nomes = sharedPreferences.getString(pratosNome + i, "Que fome...");
+            precos = sharedPreferences.getFloat(precosPrato + i, 0.0f);
+            pedidos_nome.add(nomes);
+            pedidos_preco.add(precos);
+        }
+        if(nen.equals("nennotame")){
+            pedidos_nome.remove(quantiPedidos);
+            pedidos_preco.remove(quantiPedidos);
+            quantiPedidos--;
+        }
+        quantiPedidos++;
+        editor.putInt("pedidos quantidade", quantiPedidos);
+        editor.commit();
+
+        pedido.setHasFixedSize(true);
+        pedidoLayoutManager = new LinearLayoutManager(this);
+        pedidoAdapter = new MainAdapter(pedidos_nome, pedidos_preco, recyclerViewClickInterface);
+        pedido.setLayoutManager(pedidoLayoutManager);
+        pedido.setAdapter(pedidoAdapter);
 
         btnConect = findViewById(R.id.btnBluetoothConect);
         btnPedidos = findViewById(R.id.btnLed2);
@@ -98,9 +153,11 @@ public class pedidos extends AppCompatActivity implements AdapterView.OnItemSele
 
                 if (conexao){
                     connectThread.enviar("novoPedido ");
-                    for(int i = 0; i < pedidos.length; i++){
-                        connectThread.enviar(pedidos[i]);
+                    connectThread.enviar(pedidos_nome.size() + " ");
+                    for(int i = 0; i < pedidos_nome.size(); i++){
+                        connectThread.enviar(pedidos_nome.get(i) + " ");
                     }
+                    connectThread.enviar("fim");
                     Toast.makeText(getApplicationContext(),"Pedido enviado!",Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getApplicationContext(),"Bluetooth não está conectado",Toast.LENGTH_LONG).show();
@@ -144,7 +201,6 @@ public class pedidos extends AppCompatActivity implements AdapterView.OnItemSele
 
     }
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        // super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode){
             case SOLICITA_ATIVACAO:
                 if (resultCode == Activity.RESULT_OK){

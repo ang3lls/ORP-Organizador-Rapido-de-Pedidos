@@ -10,13 +10,14 @@ SoftwareSerial bluetooth(10,11);
 
 String comando;
 int aux = 0;
-int pedidos = 0;
-int quantPratos;
-int mesa = null;
+int i = 0;
 int cmd = 0;
 int tempo = 0;
 int counter = 0;
+int pedidos = 0;
 bool start = false;
+int quantPratos;
+String quantipedidos = " ";
 
 void setup() {
   Serial.begin(9600);
@@ -33,7 +34,6 @@ void setup() {
 void loop() {
   noTone(buzzer);
   comando = " ";
-  pedido = " ";
 
   if(bluetooth.available()){
     while(bluetooth.available()){
@@ -49,46 +49,40 @@ void loop() {
         break;
 
         case 1:
-        //mesa
-        comando = " ";
-          if(caracter == ' '){
-        break;
-        cmd++;
-      }
-        comando += caracter;
-        delay(10);     
-        break;
-
-      case 2:
          // quanti pratos;
           comando = " ";
           if(caracter == ' '){
-        break;
-        cmd++;
-      }
-        comando += caracter;
+             cmd++;
+             quantPratos = int(caracter);
+             Serial.println(quantPratos);
+             break;
+           }
+        caracter += caracter;
         delay(10);     
         break;
         
-      case 3:
-      // pedidos;
-       if(caracter == ' '){
-         break;
-        pedidos[i];
-        counter++;
-       }
+        case 2:
+        // pedidos;
+        String pedidosN[quantPratos];
+        if(caracter == ' '){
+           pedidosN[i] = comando; 
+           counter++;
+           i++;
+           comando = " ";
+           break;
+        }
        comando += caracter;
        delay(10);  
        
         if(comando.indexOf("fim")){
           counter = 0;
-          
         }
-
-       break;
-       
+        for(int i = 0; i < quantPratos; i++){
+    Serial.println(pedidosN[i]);
     }
-    Serial.println(comando);
+       break;
+    }
+  }
   }
      if(digitalRead(btn1) == LOW && pedidos > 0){
       

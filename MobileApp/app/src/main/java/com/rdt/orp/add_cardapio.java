@@ -16,7 +16,6 @@ public class add_cardapio extends AppCompatActivity {
     private EditText edtPrato;
     private EditText edtPreco;
     RadioButton rb1,rb2,rb3,rb4,rb5;
-    int tipoComida;
     boolean check = false;
 
     @Override
@@ -37,6 +36,7 @@ public class add_cardapio extends AppCompatActivity {
         String prato;
         String preco_s;
         float preco;
+        int tipoComida = 0;
 
         rb1 = findViewById(R.id.radio_prato_principal);
         rb2 = findViewById(R.id.radio_salada);
@@ -45,25 +45,6 @@ public class add_cardapio extends AppCompatActivity {
         rb5 = findViewById(R.id.radio_acompanha);
         prato = edtPrato.getText().toString();
         preco_s = edtPreco.getText().toString();
-
-       radioButtonSelection();
-
-        if(prato.equals("")  || preco_s.equals("") || !check){
-            Toast.makeText(add_cardapio.this, "Ops, parece que ainda falta preencher algo!",Toast.LENGTH_SHORT).show();
-        }
-        else {
-            preco = Float.parseFloat(preco_s);
-            Intent intentEnvio = new Intent(getApplicationContext(), lista.class);
-            Bundle parametros = new Bundle();
-            parametros.putInt("chave tipo", tipoComida);
-            parametros.putString("chave prato",prato);
-            parametros.putFloat("chave preco",preco);
-            intentEnvio.putExtras(parametros);
-            Toast.makeText(add_cardapio.this, prato + " de R$" + preco + " adicionado!", Toast.LENGTH_SHORT).show();
-            startActivity(intentEnvio);
-        }
-    }
-    public void radioButtonSelection(){
 
         if(rb1.isChecked()){
             tipoComida = 1;
@@ -80,6 +61,21 @@ public class add_cardapio extends AppCompatActivity {
         }else if(rb5.isChecked()){
             tipoComida = 5;
             check = true;
+        }
+
+        if(prato.equals("")  || preco_s.equals("") || !check){
+            Toast.makeText(add_cardapio.this, "Ops, parece que ainda falta preencher algo!",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            preco = Float.parseFloat(preco_s);
+            Intent intentEnvio = new Intent(getApplicationContext(), lista.class);
+            Bundle parametros = new Bundle();
+            parametros.putInt("chave tipo", tipoComida);
+            parametros.putString("chave prato",prato);
+            parametros.putFloat("chave preco",preco);
+            intentEnvio.putExtras(parametros);
+            Toast.makeText(add_cardapio.this, prato + " de R$" + preco + " adicionado!", Toast.LENGTH_SHORT).show();
+            startActivity(intentEnvio);
         }
     }
 

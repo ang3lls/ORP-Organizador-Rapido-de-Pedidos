@@ -21,7 +21,7 @@
             android:id="@+id/radio_prato_principal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pratos"
+            android:text="Prato principal"
             android:textSize="20sp" />
 
         <RadioButton
@@ -32,17 +32,17 @@
             android:textSize="20sp" />
 
         <RadioButton
-            android:id="@+id/radio_sobremesa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sobremesa"
-            android:textSize="20sp" />
-
-        <RadioButton
             android:id="@+id/radio_bebida"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Bebida"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/radio_sobremesa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sobremesa"
             android:textSize="20sp" />
 
         <RadioButton
@@ -53,7 +53,7 @@
             android:textSize="20sp" />
     </RadioGroup>
 
-    <EditText
+    <TextView
         android:id="@+id/textView2"
         android:layout_width="375dp"
         android:layout_height="160dp"

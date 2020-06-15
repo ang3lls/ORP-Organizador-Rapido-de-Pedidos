@@ -26,7 +26,7 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, RecyclerViewClickInterface{
+public class MainActivity extends AppCompatActivity{
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -64,24 +64,5 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 || super.onSupportNavigateUp();
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
-
-    @Override
-    public void onItemClick(int posistion) {
-
-    }
-
-    @Override
-    public void onLongItemClick(int position) {
-
-    }
 }
 

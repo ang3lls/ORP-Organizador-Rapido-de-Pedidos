@@ -9,9 +9,9 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,8 +19,9 @@
         app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:id="@+id/constrainLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -35,10 +36,11 @@
                 android:id="@+id/textView3"
                 android:layout_width="213dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
                 android:text="Prato Principal"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/textView4"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -52,8 +54,8 @@
                 android:id="@+id/textView4"
                 android:layout_width="166dp"
                 android:layout_height="69dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="40dp"
                 android:background="#00FFFFFF"
                 android:backgroundTint="#FFFFFF"
                 android:fontFamily="@font/anton"
@@ -65,10 +67,10 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:layout_marginTop="10dp"
                 android:id="@+id/textView9"
                 android:layout_width="213dp"
                 android:layout_height="44dp"
+                android:layout_marginTop="10dp"
                 android:text="Salada"
                 android:textSize="30sp"
                 android:textStyle="bold"
@@ -76,10 +78,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/list_prato_p" />
 
             <TextView
-                android:layout_marginTop="10dp"
                 android:id="@+id/textView5"
                 android:layout_width="213dp"
                 android:layout_height="44dp"
+                android:layout_marginTop="10dp"
                 android:text="Bebidas"
                 android:textSize="30sp"
                 android:textStyle="bold"
@@ -87,10 +89,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/list_salada" />
 
             <TextView
-                android:layout_marginTop="10dp"
                 android:id="@+id/textView7"
                 android:layout_width="213dp"
                 android:layout_height="44dp"
+                android:layout_marginTop="10dp"
                 android:text="Sobremesa"
                 android:textSize="30sp"
                 android:textStyle="bold"
@@ -127,46 +129,52 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="@+id/textView6"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                app:layout_constraintTop_toBottomOf="@+id/textView6"
+                app:layout_constraintBottom_toBottomOf="@id/constrainLayout">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="48dp"
+                android:background="@drawable/proximo"
+                android:backgroundTint="#F3D548"
+                android:gravity="center"
+                android:onClick="irParaAddCardapio"
+                android:paddingVertical="10dp"
+                android:paddingTop="20dp"
+                android:text="Adicionar cardápio"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_light"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.589"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btnBluetoothConect2"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:gravity="center_horizontal"
+                android:textAlignment="center"
+                android:background="@drawable/proximo"
+                android:backgroundTint="#F3D548"
+                android:onClick="irParaPedidos"
+                android:paddingTop="20dp"
+                android:text="Pedidos"
+                android:textColor="@android:color/background_light"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/button5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/button5"
+                app:layout_constraintTop_toTopOf="@+id/button5" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="160dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/proximo"
-        android:backgroundTint="#F3D548"
-
-        android:onClick="irParaAddCardapio"
-        android:paddingTop="20dp"
-        android:text="Adicionar cardápio"
-
-        android:textColor="@android:color/background_light"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnBluetoothConect2"
-        android:layout_width="160dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/proximo"
-        android:backgroundTint="#F3D548"
-        android:onClick="irParaPedidos"
-        android:paddingTop="20dp"
-        android:text="Pedidos"
-        android:textColor="@android:color/background_light"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.761"
-        app:layout_constraintStart_toEndOf="@+id/button5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
