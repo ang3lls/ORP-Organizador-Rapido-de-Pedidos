@@ -165,8 +165,13 @@ public class pedidos extends AppCompatActivity implements AdapterView.OnItemSele
                     connectThread.enviar(pedidos_nome.size() + " ");
                     for(int i = 0; i < pedidos_nome.size(); i++){
                         connectThread.enviar(pedidos_nome.get(i) + "*");
+                        try {
+                            Thread.sleep(100);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
-                    connectThread.enviar("fim");
+                    connectThread.enviar("/");
                     Toast.makeText(getApplicationContext(),"Pedido enviado!",Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getApplicationContext(),"Bluetooth não está conectado",Toast.LENGTH_LONG).show();

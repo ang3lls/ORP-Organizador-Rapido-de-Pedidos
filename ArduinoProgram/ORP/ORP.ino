@@ -17,7 +17,8 @@ int counter = 0;
 int pedidos = 0;
 bool start = false;
 int quantPratos;
- String quantPedidos = " ";
+String nPedidos = " ";
+String quantPedidos = " ";
 
 void setup() {
   Serial.begin(9600);
@@ -43,30 +44,49 @@ void loop() {
         if(caracter == ' '){
         cmd++;
         break;
-       
       }
         comando += caracter;
         delay(10);
         break;
 
         case 1:
-        // pedidos;
+        if(caracter == ' '){
+           cmd++;
+           Serial.println("------------- PEDIDO -------------");
+           delay(10);
+           break;
+        }
+       nPedidos += caracter;
+       delay(10);
+       break;  
+
+       case 2:
+       // pedidos;
         if(caracter == '*'){
            i++;
+           if(caracter == '/'){
+            cmd++;
+            break;
+        }
            Serial.println(quantPedidos);
+           Serial.println("----------------------------------");
            quantPedidos = " ";
            break;
         }
        quantPedidos += caracter;
-       delay(10);  
+       delay(10);
+       break;  
+       
+       case 3:
+       Serial.print(" Quantidade de novos pedidos: ");
+       Serial.print(nPedidos);
+       Serial.println("");
+       Serial.println("----------------------------------");
+       comando = " ";
+       cmd = 0;
+       delay(10);
+       break;  
     }
-     //if(comando.indexOf("fim")){
-         // counter = 0;
-         // Serial.print("\nQuantidade de novos pedidos: ");
-         // Serial.print(i);
-         // i = 0;
-         //  break;
-        //}
   }
   }
      if(digitalRead(btn1) == LOW && pedidos > 0){
@@ -89,7 +109,6 @@ void loop() {
 
 void pedidoRecebido(){
     pedidos++;
-    Serial.println(pedidos);
         while(digitalRead(btn2) == HIGH){
         digitalWrite(led1, !digitalRead(led1));
         tone(buzzer,330);    
