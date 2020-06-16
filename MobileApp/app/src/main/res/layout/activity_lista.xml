@@ -150,27 +150,29 @@
                 android:textColor="@android:color/background_light"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.589"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/textView4"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/btnBluetoothConect2"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
-                android:gravity="center_horizontal"
-                android:textAlignment="center"
                 android:background="@drawable/proximo"
                 android:backgroundTint="#F3D548"
+                android:gravity="center_horizontal"
                 android:onClick="irParaPedidos"
                 android:paddingTop="20dp"
                 android:text="Pedidos"
+                android:textAlignment="center"
                 android:textColor="@android:color/background_light"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/button5"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/button5"
-                app:layout_constraintTop_toTopOf="@+id/button5" />
+                app:layout_constraintTop_toTopOf="@+id/button5"
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

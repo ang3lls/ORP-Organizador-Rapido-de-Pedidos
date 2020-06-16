@@ -15,6 +15,7 @@ int cmd = 0;
 int tempo = 0;
 int counter = 0;
 int pedidos = 0;
+char caracter;
 bool start = false;
 int quantPratos;
 String nPedidos = " ";
@@ -33,68 +34,19 @@ void setup() {
 }
 
 void loop() {
-  noTone(buzzer);
-  comando = " ";
 
-  if(bluetooth.available()){
-    while(bluetooth.available()){
-      char caracter = bluetooth.read();
-      switch(cmd){
-        case 0:
-        if(caracter == ' '){
-        cmd++;
-        break;
+      if(caracter != '!'){
+        comandoPedido();
       }
-        comando += caracter;
-        delay(10);
-        break;
 
-        case 1:
-        if(caracter == ' '){
-           cmd++;
-           Serial.println("------------- PEDIDO -------------");
-           delay(10);
-           break;
-        }
-       nPedidos += caracter;
-       delay(10);
-       break;  
-
-       case 2:
-       // pedidos;
-        if(caracter == '*'){
-           i++;
-           if(caracter == '/'){
-            cmd++;
-            break;
-        }
-           Serial.println(quantPedidos);
-           Serial.println("----------------------------------");
-           quantPedidos = " ";
-           break;
-        }
-       quantPedidos += caracter;
-       delay(10);
-       break;  
-       
-       case 3:
-       Serial.print(" Quantidade de novos pedidos: ");
-       Serial.print(nPedidos);
-       Serial.println("");
-       Serial.println("----------------------------------");
-       comando = " ";
-       cmd = 0;
-       delay(10);
-       break;  
-    }
-  }
-  }
+   
      if(digitalRead(btn1) == LOW && pedidos > 0){
-      
       pedidoPronto();
+       
      }
      if(comando.indexOf("novoPedido") >= 0){
       pedidoRecebido();
+   
      }
     if(tempo >= 30){
       digitalWrite(led2, LOW);
@@ -106,9 +58,68 @@ void loop() {
       delay(1000);
     }
 } 
+void comandoPedido(){
+   noTone(buzzer);
+  caracter = '!';
+  comando = " ";
+  while(caracter != '/'){
+      if(bluetooth.available()){
+        while(bluetooth.available()){
+          caracter = bluetooth.read();
+          switch(cmd){
+            case 0:
+            if(caracter == ' '){
+            cmd++;
+            break;
+          }
+            comando += caracter;
+            delay(10);
+            break;
+    
+            case 1:
+            if(caracter == ' '){
+               cmd++;
+               Serial.println("-------------------------------- PEDIDO -------------------------------");
+               delay(10);
+               break;
+            }
+           nPedidos += caracter;
+           delay(10);
+           break;  
+    
+           case 2:
+           // pedidos;
+            if(caracter == '*'){
+               i++;
+               if(caracter == '/'){
+                cmd = 0;
+                break;
+            }
+               Serial.println(quantPedidos);
+               Serial.println("-----------------------------------------------------------------------");
+               quantPedidos = " ";
+               break;
+            }
+           quantPedidos += caracter;
+           delay(10);
+           break;  
+        }
+      }
+    }
+  }
+  if(caracter == '/'){
+    Serial.print(" Quantidade de novos pedidos: ");
+    Serial.print(nPedidos);
+    Serial.println("");
+    Serial.println("-----------------------------------------------------------------------");
+    caracter = '!';
+    nPedidos = " ";
+  }
+}
 
 void pedidoRecebido(){
     pedidos++;
+    comando = "!";
         while(digitalRead(btn2) == HIGH){
         digitalWrite(led1, !digitalRead(led1));
         tone(buzzer,330);    
@@ -142,7 +153,8 @@ void pedidoRecebido(){
     
 void pedidoPronto(){
   pedidos--;
- cmd = " ";
+ cmd = 0;
+ caracter = ' ';
   if(pedidos <= 0){
     digitalWrite(led1, LOW);
   }
