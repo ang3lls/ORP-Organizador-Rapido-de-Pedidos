@@ -7,6 +7,6 @@ Sistema de comanda e atendimento para restaurantes utilizando app para Android e
 Screenshots
 ===========
 ![](https://github.com/eeikee/ORP-Organizador-Rapido-de-Pedidos/blob/master/MobileApp/app/src/main/res/drawable-v24/splash.jpg)
-![](https://github.com/eeikee/ORP-Organizador-Rapido-de-Pedidos/blob/master/MobileApp/app/src/main/res/drawable-v24/menu.png)
-![](https://github.com/eeikee/ORP-Organizador-Rapido-de-Pedidos/blob/master/MobileApp/app/src/main/res/drawable-v24/add.png)
+![](https://github.com/eeikee/ORP-Organizador-Rapido-de-Pedidos/blob/master/MobileApp/app/src/main/res/drawable-v24/menu.jpg)
+![](https://github.com/eeikee/ORP-Organizador-Rapido-de-Pedidos/blob/master/MobileApp/app/src/main/res/drawable-v24/add.jpg)
 ![](https://github.com/eeikee/ORP-Organizador-Rapido-de-Pedidos/blob/master/MobileApp/app/src/main/res/drawable-v24/chuumon.jpg)
